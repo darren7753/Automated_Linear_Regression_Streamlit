@@ -7,13 +7,14 @@ import seaborn as sns
 
 from scipy.stats import zscore,shapiro,probplot
 
+from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_absolute_error,mean_squared_error
 
 import statsmodels.api as sm
 from statsmodels.stats.diagnostic import lilliefors,acorr_breusch_godfrey
 from statsmodels.stats.outliers_influence import variance_inflation_factor
 
-from pickle import dump
+from pickle import dumps
 
 import streamlit as st
 
@@ -84,6 +85,7 @@ if (file is not None) or (sample_data):
 
         # Model
         model = sm.OLS(y,sm.add_constant(X)).fit()
+        model2 = LinearRegression().fit(X,y)
 
         # Linearity
         st.subheader("Linearity")
@@ -269,7 +271,10 @@ if (file is not None) or (sample_data):
 
         # Download
         st.header("Download")
-        if st.button("Download the linear regression model"):
-            with open("linear_regression_model.pkl","wb") as f:
-                dump(model,f)
+        model_download = st.download_button(
+            "Download the linear regression model",
+            data=dumps(model2),
+            file_name="linear_regression_model.pkl"
+        )
+        if model_download:
             st.success("The linear regression model has been downloaded!")
