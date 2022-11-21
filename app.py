@@ -48,7 +48,7 @@ if file is not None:
 if file is None:
     sample_data = st.checkbox("Use a sample data")
     if sample_data:
-        df = pd.read_excel("Sample Data.xlsx")
+        df = pd.read_excel("sample_data.xlsx")
         st.subheader("Data Preview")
         rows = st.slider("Show the first n rows",min_value=1,max_value=len(df),value=5,key="rows")
         st.dataframe(df.head(rows))
