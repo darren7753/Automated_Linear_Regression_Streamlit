@@ -33,9 +33,12 @@ st.sidebar.markdown('''
 
 # DATA
 st.header("Data")
-file = st.file_uploader("Upload your file in Excel format",type="xlsx")
+file = st.file_uploader("Upload your file in Excel format",type=["csv","xlsx"])
 if file is not None:
-    df = pd.read_excel(file)
+    try:
+        df = pd.read_csv(file)
+    except:
+        df = pd.read_excel(file)
     st.subheader("Data Preview")
     rows = st.slider("Show the first n rows",min_value=1,max_value=len(df),value=5,key="rows")
     st.dataframe(df.head(rows))
@@ -269,7 +272,7 @@ if (file is not None) or (sample_data):
 
         st.markdown("""<hr style="height:1px;border:none;color:#333;background-color:#333;"/>""",unsafe_allow_html=True)
 
-        # Download
+        # DOWNLOAD
         st.header("Download")
         model_download = st.download_button(
             "Download the linear regression model",
