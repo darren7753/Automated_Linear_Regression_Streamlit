@@ -4,22 +4,23 @@ import sympy as sp
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-
+from PIL import Image
 from scipy.stats import zscore,shapiro,probplot
-
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_absolute_error,mean_squared_error
-
 import statsmodels.api as sm
 from statsmodels.stats.diagnostic import lilliefors,acorr_breusch_godfrey
 from statsmodels.stats.outliers_influence import variance_inflation_factor
-
 from pickle import dumps
-
 import streamlit as st
 
 # CONTENT
 st.markdown("<h1 style='text-align: center;'>Linear Regression</h1>",unsafe_allow_html=True)
+st.markdown(
+    "<p style='text-align: center;'>Made by <b><a href='https://www.linkedin.com/in/mathewdarren/'>Mathew Darren Kusuma</a></b></p>",
+    unsafe_allow_html=True
+)
+st.image(Image.open("robot-handshake-human-background-futuristic-digital-age.jpg"))
 st.markdown("""<hr style="height:1px;border:none;color:#333;background-color:#333;"/>""",unsafe_allow_html=True)
 
 st.sidebar.markdown('''
