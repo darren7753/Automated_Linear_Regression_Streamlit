@@ -9,4 +9,4 @@ The goal of this project is to build an app using Streamlit that creates a linea
 - **SciPy** and **Statsmodels** for statistical analysis.
 - **Scikit-Learn** for modeling.
 - **Pickle** for saving the model.
-- **Streamlit** for creating an app. 
+- **Streamlit** for creating the app. 
